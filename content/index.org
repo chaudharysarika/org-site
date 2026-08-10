@@ -10,4 +10,4 @@ This is my website built with Emacs Org mode.
 * Blog
 
 - [[file:posts/first-post.org][My first post]]
-- [[file:posts/second-post.org][My second post on python]]
+- [[file:posts/python-datacamp.org][My second post on python]]
