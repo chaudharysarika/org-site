@@ -3,8 +3,7 @@
 #+OPTIONS: num:nil
 #+OPTIONS: ^:nil
 #+STARTUP: inlineimages
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style.css">
-
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/org-site/style.css">
 
 * Introduction to Python
 ** Emacs key bindings
