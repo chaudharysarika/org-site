@@ -1,8 +1,8 @@
-#+TITLE: Learning in Progress
-#+AUTHOR: Sarika Chaudhary
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/style.css">
+#+TITLE:  Learning in Progress
+#+AUTHOR: Your Name
+#+DATE: 2026-08-10
 #+OPTIONS: toc:nil num:nil
-
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style.css">
 * Welcome
 
 This is my website built with Emacs Org mode.
