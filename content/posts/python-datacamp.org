@@ -1,0 +1,703 @@
+#+title: Introduction to Python
+#+PROPERTY: header-args:python :session py-kernel :results value
+#+OPTIONS: num:nil
+#+OPTIONS: ^:nil
+#+STARTUP: inlineimages
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style.css">
+
+
+* Introduction to Python
+** Emacs key bindings
+- <s tab to add code blocks
+- C-c C-c to execute code
+-
+** Ways of using Python
+- The most basic form in which python could be used in within python shell.
+- Just go to your terminal and type python3 and it should start running. If python is not installed in your system then please do.
+- exit()
+- another way is to write python in a script with the extension .py and then execute it using python3 doc-name.py
+- Finally, most easy way is to execute in a script file with code blocks in between them. - Jupiter notebook is used for that purposes.
+-
+
+** Python Basics
+*** Python as calculator - Addition, Substraction, Multiplication, Division
+
+#+begin_src python :exports both
+a = 2+2
+b = 5-5
+c = 4*5
+d = 5/8
+e = [a,b,c,d]
+e
+#+end_src
+
+#+RESULTS:
+| 4 | 0 | 20 | 0.625 |
+
+*** Variable Assignment and Calculation with Variables
+
+#+begin_src python  :exports both
+height = 1.52
+weight = 56
+bmi = weight / height ** 2
+bmi
+#+end_src
+
+#+RESULTS:
+: 24.238227146814403
+
+*** Data Types (Floats, Int, Str, Bools, list)
+#+begin_src python  :exports both
+t1 = type(bmi)
+t2 = type(a)
+t3 = type("Hello")
+Rain = True
+t4 = type(Rain)
+t5 =  type(e)
+z = [t1,t2,t3, t4, t5]
+z
+#+end_src
+
+#+RESULTS:
+| <class | float | > | <class | int | > | <class | str | > | <class | bool | > | <class | list | > |
+** Python code behave differently based on data type
+*** Int
+#+begin_src python  :exports both
+x = 7
+y = 8
+z = x+y
+z
+#+end_src
+
+#+RESULTS:
+: 15
+
+*** String
+#+begin_src python :exports both
+message1 = "Hello,"
+message2 = "How are you?"
+message_full = message1 + message2
+message_full
+#+end_src
+
+#+RESULTS:
+: Hello,How are you?
+
+- You can same plus sign (+) adds when data type is int and concatenate when data type is string.
+** Manipulating Python Lists
+*** Creating Python list
+#+begin_src python :exports both
+# Python List
+names = ["Sarika", 152, "Riya", 155]
+names
+#+end_src
+
+#+RESULTS:
+| Sarika | 152 | Riya | 155 |
+
+#+begin_src python :exports both
+type(names)
+#+end_src
+
+#+RESULTS:
+: <class 'list'>
+*** Lists within a list
+#+begin_src python :exports both
+names2 = [["Sarika", 152],
+          ["Riya", 155]]
+names2
+#+end_src
+
+#+RESULTS:
+| Sarika | 152 |
+| Riya   | 155 |
+
+
+#+begin_src python :exports both
+type(names2)
+#+end_src
+
+#+RESULTS:
+: <class 'list'>
+
+*** List Indexing and Manipulation
+- Python has 0 indexing means that it starts at 0.
+**** Subset
+#+begin_src python :exports both
+names[0] # this would print Sarika
+#+end_src
+
+  #+RESULTS:
+  : Sarika
+
+- The negative indexing starts at -1.
+#+begin_src python :exports both
+names[-1] # Riya's height
+#+end_src
+
+#+RESULTS:
+: 155
+
+**** Slicing and dicing the list by using :
+#+begin_src python :exports both
+names[:2]
+#+end_src
+
+#+RESULTS:
+| Sarika | 152 |
+
+#+begin_src python :exports both
+names[2:]
+#+end_src
+
+#+RESULTS:
+| Riya | 155 |
+
+- Try same with names2.
+#+begin_src python :exports both
+names2[0]
+#+end_src
+
+#+RESULTS:
+| Sarika | 152 |
+
+
+#+begin_src python :exports both
+names2[0][1]
+#+end_src
+
+#+RESULTS:
+: 152
+**** Manipulating lists
+- Change an element in the list
+#+begin_src python :exports both
+names2[1][0] = "Nitu"
+names2
+#+end_src
+
+#+RESULTS:
+| Sarika | 152 |
+| Nitu   | 155 |
+
+**** Expanding a list
+- Add an element to the list
+#+begin_src python :exports both
+names2_ext = names2 + [["Varsha", 145]]
+names2_ext
+#+end_src
+
+#+RESULTS:
+| Sarika | 152 |
+| Nitu   | 155 |
+| Varsha | 145 |
+
+**** Delete elements of list
+#+begin_src python :exports both
+del names2_ext[0]
+names2_ext
+#+end_src
+
+#+RESULTS:
+| Nitu   | 155 |
+| Varsha | 145 |
+** Copying in Python
+- When we create a variable in python, a link of the location of that variable is created.
+- When we copy that variable into another variable, then it's a link that is copied rather than creating different location in computer.
+- So, if you change any element in copied variable, original variable also changes.
+*** Copy as link copy
+#+begin_src python :exports both
+x = ["a", "b", "c"]
+x
+#+end_src
+
+#+RESULTS:
+| a | b | c |
+
+#+begin_src python :exports both
+y = x
+y
+#+end_src
+
+#+RESULTS:
+| a | b | c |
+
+#+begin_src python :exports both
+y[1] = "z"
+y
+#+end_src
+
+#+RESULTS:
+| a | z | c |
+
+#+begin_src python :exports both
+x
+#+end_src
+
+#+RESULTS:
+| a | z | c |
+
+*** Copy as creating a separate location
+- If create a separate file. use list.
+#+begin_src python :exports both
+z = list(x)
+z
+#+end_src
+
+#+RESULTS:
+| a | b | c |
+
+#+begin_src python :exports both
+z[1] = "b"
+z
+#+end_src
+
+#+RESULTS:
+| a | b | c |
+
+#+begin_src python :exports both
+x
+#+end_src
+
+#+RESULTS:
+| a | b | c |
+
+** Functions and Methods
+*** Function
+A faction is a piece of reuseable code aimed at solving a particular task. For example, max() function to get maximum integer from a list of integers.
+**** max() function
+#+begin_src python :exports both
+fam = [1.73, 1.68, 1.71, 1.89]
+max(fam)
+#+end_src
+
+#+RESULTS:
+: 1.89
+**** round() function
+#+begin_src python :exports both
+round(fam[0],1)
+#+end_src
+
+#+RESULTS:
+: 1.7
+
+**** help() function
+help(round)
+
+*** Methods for list
+#+begin_src python :exports both
+names.index("Sarika")
+#+end_src
+
+#+RESULTS:
+: 0
+
+
+#+begin_src python :exports both
+names.index(155)
+#+end_src
+
+#+RESULTS:
+: 3
+
+#+begin_src python :exports both
+names.count(155)
+#+end_src
+
+#+RESULTS:
+: 1
+
+#+begin_src python :exports both
+names.append("Manush")
+names
+#+end_src
+
+#+RESULTS:
+| Sarika | 152 | Riya | 155 | Manush |
+
+#+begin_src python :exports both
+names.reverse()
+names
+#+end_src
+
+#+RESULTS:
+| Manush | 155 | Riya | 152 | Sarika |
+
+*** Methods for string
+#+begin_src python :exports both
+name = "sarika"
+name
+#+end_src
+
+#+RESULTS:
+: sarika
+
+#+begin_src python :exports both
+name = name.capitalize()
+name
+#+end_src
+
+#+RESULTS:
+: Sarika
+
+#+begin_src python :exports both
+name = name.replace("Sarika", "sarika chaudhary")
+name
+#+end_src
+
+#+RESULTS:
+: sarika
+
+#+begin_src python :exports both
+name = name.capitalize()
+name
+#+end_src
+
+#+RESULTS:
+: Sarika chaudhary
+
+#+begin_src python :exports both
+name = name.upper()
+name
+#+end_src
+
+#+RESULTS:
+: SARIKA CHAUDHARY
+
+#+begin_src python :exports both
+name.count("A")
+#+end_src
+
+#+RESULTS:
+: 4
+** Packages
+*** Bascis
+- Packages as directory of python scripts. Each script is a module. These modules specify functions, methods, and types aim at solving particular problems.
+
+- pkg/
+   mod1.py
+   mod2.py
+- Packages for data science.
+  + NumPy to work with arrays
+  + Matplotlib for data visualisation
+  + Scikit-learn for machine learning.
+- Install packages on your system before using it. Then, use code to instructure python that you want to use these packages.
+*** Pip
+- Pip is a package management system for python.
+- python3 get-pip.py
+
+#+begin_src python :exports both
+import numpy as np
+np.array([1,2,3])
+#+end_src
+
+#+RESULTS:
+: array([1, 2, 3])
+
+#+begin_src python :exports both
+from numpy import array
+array([1,2,3])
+#+end_src
+
+#+RESULTS:
+: array([1, 2, 3])
+
+- The first one is prefered.
+*** Math Package
+#+begin_src python :exports both
+import math
+C = 2 * 0.43 * math.pi
+"Circumference: " + str(C)
+#+end_src
+
+#+RESULTS:
+: Circumference: 2.701769682087222
+
+#+begin_src python :exports both
+import math
+A = math.pi * 0.43 ** 2
+"Area: " + str(A)
+#+end_src
+
+#+RESULTS:
+: Area: 0.5808804816487527
+** NumPy (Numerical Python)
+*** Why NumPy and Not Lists
+If we have list of height and weight of each family members and want to calculate BMI. Unfortunately, element wise calculation is not possible with lists. You can do element wise calculaton but better use NumPy. NumPy array can do it.
+
+#+begin_src python  :exports both
+height = [1.75, 1.65, 1.85, 1.79, 1.54]
+height
+#+end_src
+
+#+RESULTS:
+| 1.75 | 1.65 | 1.85 | 1.79 | 1.54 |
+
+#+begin_src python  :exports both
+weight = [65.6, 85.2, 75.9, 70.5, 55.5]
+weight
+#+end_src
+
+#+RESULTS:
+| 65.6 | 85.2 | 75.9 | 70.5 | 55.5 |
+
+#+begin_src python :exports both
+weight / height ** 2
+#+end_src
+
+#+RESULTS:
+
+*** Install numpy package
+pip3 install numpy.
+*** Example
+#+begin_src python :exports both
+import numpy as np
+np_height = np.array(height)
+np_height
+#+end_src
+
+#+RESULTS:
+: array([1.75, 1.65, 1.85, 1.79, 1.54])
+
+#+begin_src python :exports both
+np_weight = np.array(weight)
+np_weight
+#+end_src
+
+#+RESULTS:
+: array([65.6, 85.2, 75.9, 70.5, 55.5])
+
+#+begin_src python :exports both
+bmi = np_weight / np_height ** 2
+bmi
+#+end_src
+
+#+RESULTS:
+: array([21.42040816, 31.29476584, 22.17677137, 22.00305858, 23.40192275])
+
+- First of all, numpy array can contain value of only one type. It's either float, booleans or something else.
+- It will contain only one type.
+- Numpy is a new type of python type.
+- It comes with it's own methods.
+- Plus sigh would here do a element wise addition.
+
+#+begin_src python :exports both
+double_weight = np_weight + np_weight
+double_weight
+#+end_src
+
+#+RESULTS:
+: array([131.2, 170.4, 151.8, 141. , 111. ])
+
+*** Subsetting in NumPy
+- It can work similar to list.
+#+begin_src python :exports both
+bmi[1]
+#+end_src
+
+#+RESULTS:
+: 31.29476584022039
+
+- It can also do boolean outcome.
+#+begin_src python :exports both
+bmi>23
+#+end_src
+
+#+RESULTS:
+: array([False,  True, False, False,  True])
+
+- Select the true values
+#+begin_src python :exports both
+bmi[bmi > 23]
+#+end_src
+
+#+RESULTS:
+: array([31.29476584, 23.40192275])
+*** 2D NumPy Arrays
+**** Example of 2d numpy array
+#+begin_src python :exports both
+np_2d = np.array([[1.75, 1.65, 1.85, 1.79, 1.54],
+                  [65.6, 85.2, 75.9, 70.5, 55.5]])
+np_2d
+#+end_src
+
+#+RESULTS:
+: array([[ 1.75,  1.65,  1.85,  1.79,  1.54],
+:        [65.6 , 85.2 , 75.9 , 70.5 , 55.5 ]])
+
+- Attribute of np arrays.
+
+#+begin_src python :exports both
+np_2d.shape
+#+end_src
+
+#+RESULTS:
+| 2 | 5 |
+
+- If any one element is string, all elements would be forced into strings.
+
+#+begin_src python :exports both
+np_2d_2 = np.array([[1.75, 1.65, 1.85, 1.79, 1.54],
+                  [65.6, 85.2, 75.9, 70.5, "55.5"]])
+np_2d_2
+#+end_src
+
+#+RESULTS:
+: array([['1.75', '1.65', '1.85', '1.79', '1.54'],
+:        ['65.6', '85.2', '75.9', '70.5', '55.5']], dtype='<U32')
+
+**** Subsetting
+***** Select element at 1st raw and 3rd column
+#+begin_src python :exports both
+np_2d[0][2]
+#+end_src
+
+#+RESULTS:
+: 1.85
+
+***** Another way of doing the same
+#+begin_src python :exports both
+np_2d[0,2]
+#+end_src
+
+#+RESULTS:
+: 1.85
+
+***** Select both raws and 2nd and 3rd column
+#+begin_src python :exports both
+np_2d[:,1:3]
+#+end_src
+
+#+RESULTS:
+: array([[ 1.65,  1.85],
+:        [85.2 , 75.9 ]])
+***** Select 2nd raw and all elements
+#+begin_src python :exports both
+np_2d[1,:]
+#+end_src
+
+#+RESULTS:
+: array([65.6, 85.2, 75.9, 70.5, 55.5])
+** Basic Statistics with NumPy
+*** Get to know your data
+- It is difficult to know anything if numbers become too large.
+- Suppose we have data for 5000 individuals with height and weight saved as np_city
+- Summary Statistics is a good way to start.
+*** Average
+- np.mean()
+- Average height of 5000 people in np_city
+- np.mean(np_city[:,0])
+- Average weight = np.mean(np_city[:,1])
+- np.median(np_city[:,0]) - median height
+*** Correlation Coefficient and Standard Deviation
+- np.corrcoef(np_city[:,0], np_city[:,1])
+- np.std(np_city[:,0])  - standard deviation of height
+*** Other basics commands
+- sum()
+- sort()
+*** Speed Matters
+Since NumPy forces single data type, it speeds up the calculation.
+*** Generate data
+- To generate random data use - np.random.normal()
+
+#+begin_src python :exports both
+height = np.round(np.random.normal(1.75, 0.20, 5000), 2)
+height
+#+end_src
+
+#+RESULTS:
+: array([1.65, 2.  , 1.78, ..., 1.93, 1.81, 2.  ])
+
+#+begin_src python :exports both
+weight = np.round(np.random.normal(60.32, 15, 5000), 2)
+weight
+#+end_src
+
+#+RESULTS:
+: array([67.67, 60.84, 44.3 , ..., 56.39, 61.26, 57.02])
+
+#+begin_src python :exports both
+np_city = np.column_stack((height, weight))
+np_city
+#+end_src
+
+#+RESULTS:
+: array([[ 1.65, 67.67],
+:        [ 2.  , 60.84],
+:        [ 1.78, 44.3 ],
+:        ...,
+:        [ 1.93, 56.39],
+:        [ 1.81, 61.26],
+:        [ 2.  , 57.02]])
+
+*
+* Intermediate Python
+** Data Visualization
+*** Matplotlib - line and scatter plot
+
+** Dictionaries and Pandas
+*** Dictionaries
+*** Pandas
+**** Dictionary to DataFrame
+* Introduction to Statistics in Python
+** Introduction Video
+*** What is statistics?
+- The practice and study of collecting and analysing data.
+- A summary statistics is a fact about or summary of some data.
+*** What can statistics do?
+- How likely someone is to purchase a product? Are people more likely to purchase it if they can use a different payment system?
+- How many occupant your hotel have? How can you optimise occupancy?
+- How many sizes of jeans need to be manufactured so that they can fit 95% of the population? Should the same number of each size be produced?
+- A/B tests: which add is more effective in getting people to purchase a product?
+***  What statistics can't do?
+- Why is Game of Thrones so
+*** Types of statistics
+**** Descriptive Statistics
+- Describe and summarise
+**** Inferential Statistics
+- use sample data to make inferences about a larger population
+*** Two Types of Data
+- Numeric (Quantitative)
+  - Continuous data
+  - Discrete Data
+- Categorical Data (Qualitative data)
+  - Nominal
+  - Ordinal
+*** Why does data types matter?
+- Since data type dictate what kind of summary statistics and visualisation to use.
+  -
+** Measure of centre
+*** Histogram
+- data points into bins
+*** Mean
+- add data divide by number of data points.
+- use numpy mean function
+-
+*** Median
+- Middle point after arranging it in order
+*** Mode
+- Most frequent data
+*** Which one to use?
+- Mean is much more sensitive to extreme value.
+- Mean is better for symetrical data
+- Median is better for skew data.
+- Mean is skewed in the direction of
+** Measure of centre - practice
+*** Food consumption in USA
+
+#+RESULTS:
+
+#+begin_src python :exports both
+# Import numpy with alias np
+import numpy as np
+
+# Subset country for USA: usa_consumption
+usa_consumption = food_consumption[food_consumption['country'] == 'USA']
+
+# Calculate mean consumption in USA
+print(np.mean(usa_consumption['consumption']))
+
+# Calculate median consumption in USA
+print(np.median(usa_consumption['consumption']))
+#+end_src
+
+it.

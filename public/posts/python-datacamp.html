@@ -1,0 +1,1779 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Introduction to Python</title>
+<meta name="author" content="Sarika Chaudhary" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Introduction to Python</h1>
+<div id="outline-container-org5660468" class="outline-2">
+<h2 id="org5660468">Introduction to Python</h2>
+<div class="outline-text-2" id="text-org5660468">
+</div>
+<div id="outline-container-orgcf52cea" class="outline-3">
+<h3 id="orgcf52cea">Emacs key bindings</h3>
+<div class="outline-text-3" id="text-orgcf52cea">
+<ul class="org-ul">
+<li>&lt;s tab to add code blocks</li>
+<li>C-c C-c to execute code</li>
+<li></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb749acf" class="outline-3">
+<h3 id="orgb749acf">Ways of using Python</h3>
+<div class="outline-text-3" id="text-orgb749acf">
+<ul class="org-ul">
+<li>The most basic form in which python could be used in within python shell.</li>
+<li>Just go to your terminal and type python3 and it should start running. If python is not installed in your system then please do.</li>
+<li>exit()</li>
+<li>another way is to write python in a script with the extension .py and then execute it using python3 doc-name.py</li>
+<li>Finally, most easy way is to execute in a script file with code blocks in between them. - Jupiter notebook is used for that purposes.</li>
+<li></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8fcc896" class="outline-3">
+<h3 id="org8fcc896">Python Basics</h3>
+<div class="outline-text-3" id="text-org8fcc896">
+</div>
+<div id="outline-container-org91ecd5b" class="outline-4">
+<h4 id="org91ecd5b">Python as calculator - Addition, Substraction, Multiplication, Division</h4>
+<div class="outline-text-4" id="text-org91ecd5b">
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">a</span> = 2+2
+<span style="color: #0084C8; font-weight: bold;">b</span> = 5-5
+<span style="color: #0084C8; font-weight: bold;">c</span> = 4*5
+<span style="color: #0084C8; font-weight: bold;">d</span> = 5/8
+<span style="color: #0084C8; font-weight: bold;">e</span> = [a,b,c,d]
+e
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">0</td>
+<td class="org-right">20</td>
+<td class="org-right">0.625</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orge049bef" class="outline-4">
+<h4 id="orge049bef">Variable Assignment and Calculation with Variables</h4>
+<div class="outline-text-4" id="text-orge049bef">
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">height</span> = 1.52
+<span style="color: #0084C8; font-weight: bold;">weight</span> = 56
+<span style="color: #0084C8; font-weight: bold;">bmi</span> = weight / height ** 2
+bmi
+</code></pre>
+</div>
+
+<pre class="example">
+24.238227146814403
+</pre>
+</div>
+</div>
+<div id="outline-container-org8cfc435" class="outline-4">
+<h4 id="org8cfc435">Data Types (Floats, Int, Str, Bools, list)</h4>
+<div class="outline-text-4" id="text-org8cfc435">
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">t1</span> = <span style="color: #A020F0;">type</span>(bmi)
+<span style="color: #0084C8; font-weight: bold;">t2</span> = <span style="color: #A020F0;">type</span>(a)
+<span style="color: #0084C8; font-weight: bold;">t3</span> = <span style="color: #A020F0;">type</span>(<span style="color: #4E9A06;">"Hello"</span>)
+<span style="color: #0084C8; font-weight: bold;">Rain</span> = <span style="color: #F5666D;">True</span>
+<span style="color: #0084C8; font-weight: bold;">t4</span> = <span style="color: #A020F0;">type</span>(Rain)
+<span style="color: #0084C8; font-weight: bold;">t5</span> =  <span style="color: #A020F0;">type</span>(e)
+<span style="color: #0084C8; font-weight: bold;">z</span> = [t1,t2,t3, t4, t5]
+z
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&lt;class</td>
+<td class="org-left">float</td>
+<td class="org-left">&gt;</td>
+<td class="org-left">&lt;class</td>
+<td class="org-left">int</td>
+<td class="org-left">&gt;</td>
+<td class="org-left">&lt;class</td>
+<td class="org-left">str</td>
+<td class="org-left">&gt;</td>
+<td class="org-left">&lt;class</td>
+<td class="org-left">bool</td>
+<td class="org-left">&gt;</td>
+<td class="org-left">&lt;class</td>
+<td class="org-left">list</td>
+<td class="org-left">&gt;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-org9671924" class="outline-3">
+<h3 id="org9671924">Python code behave differently based on data type</h3>
+<div class="outline-text-3" id="text-org9671924">
+</div>
+<div id="outline-container-org4175b09" class="outline-4">
+<h4 id="org4175b09">Int</h4>
+<div class="outline-text-4" id="text-org4175b09">
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">x</span> = 7
+<span style="color: #0084C8; font-weight: bold;">y</span> = 8
+<span style="color: #0084C8; font-weight: bold;">z</span> = x+y
+z
+</code></pre>
+</div>
+
+<pre class="example">
+15
+</pre>
+</div>
+</div>
+<div id="outline-container-org1100b17" class="outline-4">
+<h4 id="org1100b17">String</h4>
+<div class="outline-text-4" id="text-org1100b17">
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">message1</span> = <span style="color: #4E9A06;">"Hello,"</span>
+<span style="color: #0084C8; font-weight: bold;">message2</span> = <span style="color: #4E9A06;">"How are you?"</span>
+<span style="color: #0084C8; font-weight: bold;">message_full</span> = message1 + message2
+message_full
+</code></pre>
+</div>
+
+<pre class="example">
+Hello,How are you?
+</pre>
+
+<ul class="org-ul">
+<li>You can same plus sign (+) adds when data type is int and concatenate when data type is string.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org7d255f7" class="outline-3">
+<h3 id="org7d255f7">Manipulating Python Lists</h3>
+<div class="outline-text-3" id="text-org7d255f7">
+</div>
+<div id="outline-container-org5b15192" class="outline-4">
+<h4 id="org5b15192">Creating Python list</h4>
+<div class="outline-text-4" id="text-org5b15192">
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #204A87;"># </span><span style="color: #204A87;">Python List
+</span><span style="color: #0084C8; font-weight: bold;">names</span> = [<span style="color: #4E9A06;">"Sarika"</span>, 152, <span style="color: #4E9A06;">"Riya"</span>, 155]
+names
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Sarika</td>
+<td class="org-right">152</td>
+<td class="org-left">Riya</td>
+<td class="org-right">155</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #A020F0;">type</span>(names)
+</code></pre>
+</div>
+
+<pre class="example">
+&lt;class 'list'&gt;
+</pre>
+</div>
+</div>
+<div id="outline-container-org5e497f8" class="outline-4">
+<h4 id="org5e497f8">Lists within a list</h4>
+<div class="outline-text-4" id="text-org5e497f8">
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">names2</span> = [[<span style="color: #4E9A06;">"Sarika"</span>, 152],
+          [<span style="color: #4E9A06;">"Riya"</span>, 155]]
+names2
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Sarika</td>
+<td class="org-right">152</td>
+</tr>
+
+<tr>
+<td class="org-left">Riya</td>
+<td class="org-right">155</td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #A020F0;">type</span>(names2)
+</code></pre>
+</div>
+
+<pre class="example">
+&lt;class 'list'&gt;
+</pre>
+</div>
+</div>
+<div id="outline-container-org0027986" class="outline-4">
+<h4 id="org0027986">List Indexing and Manipulation</h4>
+<div class="outline-text-4" id="text-org0027986">
+<ul class="org-ul">
+<li>Python has 0 indexing means that it starts at 0.</li>
+</ul>
+</div>
+<ul class="org-ul">
+<li><a id="org81936f2"></a>Subset<br />
+<div class="outline-text-5" id="text-org81936f2">
+<div class="org-src-container">
+<pre class="src src-python"><code>names[0] <span style="color: #204A87;"># </span><span style="color: #204A87;">this would print Sarika</span>
+</code></pre>
+</div>
+
+<pre class="example">
+Sarika
+</pre>
+
+<ul class="org-ul">
+<li>The negative indexing starts at -1.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python"><code>names[-1] <span style="color: #204A87;"># </span><span style="color: #204A87;">Riya's height</span>
+</code></pre>
+</div>
+
+<pre class="example">
+155
+</pre>
+</div>
+</li>
+<li><a id="org68ee771"></a>Slicing and dicing the list by using :<br />
+<div class="outline-text-5" id="text-org68ee771">
+<div class="org-src-container">
+<pre class="src src-python"><code>names[:2]
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Sarika</td>
+<td class="org-right">152</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-python"><code>names[2:]
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Riya</td>
+<td class="org-right">155</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>Try same with names2.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python"><code>names2[0]
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Sarika</td>
+<td class="org-right">152</td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><code>names2[0][1]
+</code></pre>
+</div>
+
+<pre class="example">
+152
+</pre>
+</div>
+</li>
+<li><a id="org975aaac"></a>Manipulating lists<br />
+<div class="outline-text-5" id="text-org975aaac">
+<ul class="org-ul">
+<li>Change an element in the list</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python"><code>names2[1][0] = <span style="color: #4E9A06;">"Nitu"</span>
+names2
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Sarika</td>
+<td class="org-right">152</td>
+</tr>
+
+<tr>
+<td class="org-left">Nitu</td>
+<td class="org-right">155</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li><a id="org6196cc5"></a>Expanding a list<br />
+<div class="outline-text-5" id="text-org6196cc5">
+<ul class="org-ul">
+<li>Add an element to the list</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">names2_ext</span> = names2 + [[<span style="color: #4E9A06;">"Varsha"</span>, 145]]
+names2_ext
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Sarika</td>
+<td class="org-right">152</td>
+</tr>
+
+<tr>
+<td class="org-left">Nitu</td>
+<td class="org-right">155</td>
+</tr>
+
+<tr>
+<td class="org-left">Varsha</td>
+<td class="org-right">145</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li><a id="orgc52b77e"></a>Delete elements of list<br />
+<div class="outline-text-5" id="text-orgc52b77e">
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #A52A2A; font-weight: bold;">del</span> names2_ext[0]
+names2_ext
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Nitu</td>
+<td class="org-right">155</td>
+</tr>
+
+<tr>
+<td class="org-left">Varsha</td>
+<td class="org-right">145</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org02df001" class="outline-3">
+<h3 id="org02df001">Copying in Python</h3>
+<div class="outline-text-3" id="text-org02df001">
+<ul class="org-ul">
+<li>When we create a variable in python, a link of the location of that variable is created.</li>
+<li>When we copy that variable into another variable, then it&rsquo;s a link that is copied rather than creating different location in computer.</li>
+<li>So, if you change any element in copied variable, original variable also changes.</li>
+</ul>
+</div>
+<div id="outline-container-orga67d2ab" class="outline-4">
+<h4 id="orga67d2ab">Copy as link copy</h4>
+<div class="outline-text-4" id="text-orga67d2ab">
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">x</span> = [<span style="color: #4E9A06;">"a"</span>, <span style="color: #4E9A06;">"b"</span>, <span style="color: #4E9A06;">"c"</span>]
+x
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">a</td>
+<td class="org-left">b</td>
+<td class="org-left">c</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">y</span> = x
+y
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">a</td>
+<td class="org-left">b</td>
+<td class="org-left">c</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">y</span>[1] = <span style="color: #4E9A06;">"z"</span>
+y
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">a</td>
+<td class="org-left">z</td>
+<td class="org-left">c</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-python"><code>x
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">a</td>
+<td class="org-left">z</td>
+<td class="org-left">c</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org3e25717" class="outline-4">
+<h4 id="org3e25717">Copy as creating a separate location</h4>
+<div class="outline-text-4" id="text-org3e25717">
+<ul class="org-ul">
+<li>If create a separate file. use list.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">z</span> = <span style="color: #A020F0;">list</span>(x)
+z
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">a</td>
+<td class="org-left">z</td>
+<td class="org-left">c</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">z</span>[1] = <span style="color: #4E9A06;">"b"</span>
+z
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">a</td>
+<td class="org-left">b</td>
+<td class="org-left">c</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-python"><code>x
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">a</td>
+<td class="org-left">z</td>
+<td class="org-left">c</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-org20947d4" class="outline-3">
+<h3 id="org20947d4">Functions and Methods</h3>
+<div class="outline-text-3" id="text-org20947d4">
+</div>
+<div id="outline-container-org89abbaa" class="outline-4">
+<h4 id="org89abbaa">Function</h4>
+<div class="outline-text-4" id="text-org89abbaa">
+<p>
+A faction is a piece of reuseable code aimed at solving a particular task. For example, max() function to get maximum integer from a list of integers.
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="org4f44ef3"></a>max() function<br />
+<div class="outline-text-5" id="text-org4f44ef3">
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">fam</span> = [1.73, 1.68, 1.71, 1.89]
+<span style="color: #A020F0;">max</span>(fam)
+</code></pre>
+</div>
+
+<pre class="example">
+1.89
+</pre>
+</div>
+</li>
+<li><a id="org886120c"></a>round() function<br />
+<div class="outline-text-5" id="text-org886120c">
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #A020F0;">round</span>(fam[0],1)
+</code></pre>
+</div>
+
+<pre class="example">
+1.7
+</pre>
+</div>
+</li>
+<li><a id="org0156e52"></a>help() function<br />
+<div class="outline-text-5" id="text-org0156e52">
+<p>
+help(round)
+</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgd091e2d" class="outline-4">
+<h4 id="orgd091e2d">Methods for list</h4>
+<div class="outline-text-4" id="text-orgd091e2d">
+<div class="org-src-container">
+<pre class="src src-python"><code>names.index(<span style="color: #4E9A06;">"Sarika"</span>)
+</code></pre>
+</div>
+
+<pre class="example">
+0
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><code>names.index(155)
+</code></pre>
+</div>
+
+<pre class="example">
+3
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-python"><code>names.count(155)
+</code></pre>
+</div>
+
+<pre class="example">
+1
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-python"><code>names.append(<span style="color: #4E9A06;">"Manush"</span>)
+names
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Sarika</td>
+<td class="org-right">152</td>
+<td class="org-left">Riya</td>
+<td class="org-right">155</td>
+<td class="org-left">Manush</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-python"><code>names.reverse()
+names
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Manush</td>
+<td class="org-right">155</td>
+<td class="org-left">Riya</td>
+<td class="org-right">152</td>
+<td class="org-left">Sarika</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org25a4e06" class="outline-4">
+<h4 id="org25a4e06">Methods for string</h4>
+<div class="outline-text-4" id="text-org25a4e06">
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">name</span> = <span style="color: #4E9A06;">"sarika"</span>
+name
+</code></pre>
+</div>
+
+<pre class="example">
+sarika
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">name</span> = name.capitalize()
+name
+</code></pre>
+</div>
+
+<pre class="example">
+Sarika
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">name</span> = name.replace(<span style="color: #4E9A06;">"Sarika"</span>, <span style="color: #4E9A06;">"sarika chaudhary"</span>)
+name
+</code></pre>
+</div>
+
+<pre class="example">
+sarika chaudhary
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">name</span> = name.capitalize()
+name
+</code></pre>
+</div>
+
+<pre class="example">
+Sarika chaudhary
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">name</span> = name.upper()
+name
+</code></pre>
+</div>
+
+<pre class="example">
+SARIKA CHAUDHARY
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-python"><code>name.count(<span style="color: #4E9A06;">"A"</span>)
+</code></pre>
+</div>
+
+<pre class="example">
+4
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org82a144d" class="outline-3">
+<h3 id="org82a144d">Packages</h3>
+<div class="outline-text-3" id="text-org82a144d">
+</div>
+<div id="outline-container-orgfa2a698" class="outline-4">
+<h4 id="orgfa2a698">Bascis</h4>
+<div class="outline-text-4" id="text-orgfa2a698">
+<ul class="org-ul">
+<li>Packages as directory of python scripts. Each script is a module. These modules specify functions, methods, and types aim at solving particular problems.</li>
+
+<li>pkg/
+mod1.py
+mod2.py</li>
+<li>Packages for data science.
+<ul class="org-ul">
+<li>NumPy to work with arrays</li>
+<li>Matplotlib for data visualisation</li>
+<li>Scikit-learn for machine learning.</li>
+</ul></li>
+<li>Install packages on your system before using it. Then, use code to instructure python that you want to use these packages.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge03aa97" class="outline-4">
+<h4 id="orge03aa97">Pip</h4>
+<div class="outline-text-4" id="text-orge03aa97">
+<ul class="org-ul">
+<li>Pip is a package management system for python.</li>
+<li>python3 get-pip.py</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #A52A2A; font-weight: bold;">import</span> numpy <span style="color: #A52A2A; font-weight: bold;">as</span> np
+np.array([1,2,3])
+</code></pre>
+</div>
+
+<pre class="example">
+array([1, 2, 3])
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #A52A2A; font-weight: bold;">from</span> numpy <span style="color: #A52A2A; font-weight: bold;">import</span> array
+array([1,2,3])
+</code></pre>
+</div>
+
+<pre class="example">
+array([1, 2, 3])
+</pre>
+
+<ul class="org-ul">
+<li>The first one is prefered.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgca537b0" class="outline-4">
+<h4 id="orgca537b0">Math Package</h4>
+<div class="outline-text-4" id="text-orgca537b0">
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #A52A2A; font-weight: bold;">import</span> math
+<span style="color: #0084C8; font-weight: bold;">C</span> = 2 * 0.43 * math.pi
+<span style="color: #4E9A06;">"Circumference: "</span> + <span style="color: #A020F0;">str</span>(C)
+</code></pre>
+</div>
+
+<pre class="example">
+Circumference: 2.701769682087222
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #A52A2A; font-weight: bold;">import</span> math
+<span style="color: #0084C8; font-weight: bold;">A</span> = math.pi * 0.43 ** 2
+<span style="color: #4E9A06;">"Area: "</span> + <span style="color: #A020F0;">str</span>(A)
+</code></pre>
+</div>
+
+<pre class="example">
+Area: 0.5808804816487527
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge4190cb" class="outline-3">
+<h3 id="orge4190cb">NumPy (Numerical Python)</h3>
+<div class="outline-text-3" id="text-orge4190cb">
+</div>
+<div id="outline-container-orgef6a5ab" class="outline-4">
+<h4 id="orgef6a5ab">Why NumPy and Not Lists</h4>
+<div class="outline-text-4" id="text-orgef6a5ab">
+<p>
+If we have list of height and weight of each family members and want to calculate BMI. Unfortunately, element wise calculation is not possible with lists. You can do element wise calculaton but better use NumPy. NumPy array can do it.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">height</span> = [1.75, 1.65, 1.85, 1.79, 1.54]
+height
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">1.75</td>
+<td class="org-right">1.65</td>
+<td class="org-right">1.85</td>
+<td class="org-right">1.79</td>
+<td class="org-right">1.54</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">weight</span> = [65.6, 85.2, 75.9, 70.5, 55.5]
+weight
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">65.6</td>
+<td class="org-right">85.2</td>
+<td class="org-right">75.9</td>
+<td class="org-right">70.5</td>
+<td class="org-right">55.5</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-python"><code>weight / height ** 2
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd99d774" class="outline-4">
+<h4 id="orgd99d774">Install numpy package</h4>
+<div class="outline-text-4" id="text-orgd99d774">
+<p>
+pip3 install numpy.
+</p>
+</div>
+</div>
+<div id="outline-container-orgcbcacd1" class="outline-4">
+<h4 id="orgcbcacd1">Example</h4>
+<div class="outline-text-4" id="text-orgcbcacd1">
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #A52A2A; font-weight: bold;">import</span> numpy <span style="color: #A52A2A; font-weight: bold;">as</span> np
+<span style="color: #0084C8; font-weight: bold;">np_height</span> = np.array(height)
+np_height
+</code></pre>
+</div>
+
+<pre class="example">
+array([1.75, 1.65, 1.85, 1.79, 1.54])
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">np_weight</span> = np.array(weight)
+np_weight
+</code></pre>
+</div>
+
+<pre class="example">
+array([65.6, 85.2, 75.9, 70.5, 55.5])
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">bmi</span> = np_weight / np_height ** 2
+bmi
+</code></pre>
+</div>
+
+<pre class="example">
+array([21.42040816, 31.29476584, 22.17677137, 22.00305858, 23.40192275])
+</pre>
+
+<ul class="org-ul">
+<li>First of all, numpy array can contain value of only one type. It&rsquo;s either float, booleans or something else.</li>
+<li>It will contain only one type.</li>
+<li>Numpy is a new type of python type.</li>
+<li>It comes with it&rsquo;s own methods.</li>
+<li>Plus sigh would here do a element wise addition.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">double_weight</span> = np_weight + np_weight
+double_weight
+</code></pre>
+</div>
+
+<pre class="example">
+array([131.2, 170.4, 151.8, 141. , 111. ])
+</pre>
+</div>
+</div>
+<div id="outline-container-orgbbeb17e" class="outline-4">
+<h4 id="orgbbeb17e">Subsetting in NumPy</h4>
+<div class="outline-text-4" id="text-orgbbeb17e">
+<ul class="org-ul">
+<li>It can work similar to list.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python"><code>bmi[1]
+</code></pre>
+</div>
+
+<pre class="example">
+31.29476584022039
+</pre>
+
+<ul class="org-ul">
+<li>It can also do boolean outcome.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python"><code>bmi&gt;23
+</code></pre>
+</div>
+
+<pre class="example">
+array([False,  True, False, False,  True])
+</pre>
+
+<ul class="org-ul">
+<li>Select the true values</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python"><code>bmi[bmi &gt; 23]
+</code></pre>
+</div>
+
+<pre class="example">
+array([31.29476584, 23.40192275])
+</pre>
+</div>
+</div>
+<div id="outline-container-org30f655b" class="outline-4">
+<h4 id="org30f655b">2D NumPy Arrays</h4>
+<div class="outline-text-4" id="text-org30f655b">
+</div>
+<ul class="org-ul">
+<li><a id="orgb200be0"></a>Example of 2d numpy array<br />
+<div class="outline-text-5" id="text-orgb200be0">
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">np_2d</span> = np.array([[1.75, 1.65, 1.85, 1.79, 1.54],
+                  [65.6, 85.2, 75.9, 70.5, 55.5]])
+np_2d
+</code></pre>
+</div>
+
+<pre class="example">
+array([[ 1.75,  1.65,  1.85,  1.79,  1.54],
+       [65.6 , 85.2 , 75.9 , 70.5 , 55.5 ]])
+</pre>
+
+<ul class="org-ul">
+<li>Attribute of np arrays.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-python"><code>np_2d.shape
+</code></pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">5</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>If any one element is string, all elements would be forced into strings.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">np_2d_2</span> = np.array([[1.75, 1.65, 1.85, 1.79, 1.54],
+                  [65.6, 85.2, 75.9, 70.5, <span style="color: #4E9A06;">"55.5"</span>]])
+np_2d_2
+</code></pre>
+</div>
+
+<pre class="example">
+array([['1.75', '1.65', '1.85', '1.79', '1.54'],
+       ['65.6', '85.2', '75.9', '70.5', '55.5']], dtype='&lt;U32')
+</pre>
+</div>
+</li>
+<li><a id="orgf0d64ea"></a>Subsetting<br />
+<ul class="org-ul">
+<li><a id="orgb55f055"></a>Select element at 1st raw and 3rd column<br />
+<div class="outline-text-6" id="text-orgb55f055">
+<div class="org-src-container">
+<pre class="src src-python"><code>np_2d[0][2]
+</code></pre>
+</div>
+
+<pre class="example">
+1.85
+</pre>
+</div>
+</li>
+<li><a id="org2366f98"></a>Another way of doing the same<br />
+<div class="outline-text-6" id="text-org2366f98">
+<div class="org-src-container">
+<pre class="src src-python"><code>np_2d[0,2]
+</code></pre>
+</div>
+
+<pre class="example">
+1.85
+</pre>
+</div>
+</li>
+<li><a id="orge7490d7"></a>Select both raws and 2nd and 3rd column<br />
+<div class="outline-text-6" id="text-orge7490d7">
+<div class="org-src-container">
+<pre class="src src-python"><code>np_2d[:,1:3]
+</code></pre>
+</div>
+
+<pre class="example">
+array([[ 1.65,  1.85],
+       [85.2 , 75.9 ]])
+</pre>
+</div>
+</li>
+<li><a id="orgac2781c"></a>Select 2nd raw and all elements<br />
+<div class="outline-text-6" id="text-orgac2781c">
+<div class="org-src-container">
+<pre class="src src-python"><code>np_2d[1,:]
+</code></pre>
+</div>
+
+<pre class="example">
+array([65.6, 85.2, 75.9, 70.5, 55.5])
+</pre>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org160ddbe" class="outline-3">
+<h3 id="org160ddbe">Basic Statistics with NumPy</h3>
+<div class="outline-text-3" id="text-org160ddbe">
+</div>
+<div id="outline-container-org4e142e9" class="outline-4">
+<h4 id="org4e142e9">Get to know your data</h4>
+<div class="outline-text-4" id="text-org4e142e9">
+<ul class="org-ul">
+<li>It is difficult to know anything if numbers become too large.</li>
+<li>Suppose we have data for 5000 individuals with height and weight saved as np_city</li>
+<li>Summary Statistics is a good way to start.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3367b59" class="outline-4">
+<h4 id="org3367b59">Average</h4>
+<div class="outline-text-4" id="text-org3367b59">
+<ul class="org-ul">
+<li>np.mean()</li>
+<li>Average height of 5000 people in np_city</li>
+<li>np.mean(np_city[:,0])</li>
+<li>Average weight = np.mean(np_city[:,1])</li>
+<li>np.median(np_city[:,0]) - median height</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd0c8650" class="outline-4">
+<h4 id="orgd0c8650">Correlation Coefficient and Standard Deviation</h4>
+<div class="outline-text-4" id="text-orgd0c8650">
+<ul class="org-ul">
+<li>np.corrcoef(np_city[:,0], np_city[:,1])</li>
+<li>np.std(np_city[:,0])  - standard deviation of height</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga933c8c" class="outline-4">
+<h4 id="orga933c8c">Other basics commands</h4>
+<div class="outline-text-4" id="text-orga933c8c">
+<ul class="org-ul">
+<li>sum()</li>
+<li>sort()</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc608bab" class="outline-4">
+<h4 id="orgc608bab">Speed Matters</h4>
+<div class="outline-text-4" id="text-orgc608bab">
+<p>
+Since NumPy forces single data type, it speeds up the calculation.
+</p>
+</div>
+</div>
+<div id="outline-container-orgaa55df3" class="outline-4">
+<h4 id="orgaa55df3">Generate data</h4>
+<div class="outline-text-4" id="text-orgaa55df3">
+<ul class="org-ul">
+<li>To generate random data use - np.random.normal()</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">height</span> = np.<span style="color: #A020F0;">round</span>(np.random.normal(1.75, 0.20, 5000), 2)
+height
+</code></pre>
+</div>
+
+<pre class="example">
+array([1.67, 1.76, 1.78, ..., 1.86, 1.79, 1.75])
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">weight</span> = np.<span style="color: #A020F0;">round</span>(np.random.normal(60.32, 15, 5000), 2)
+weight
+</code></pre>
+</div>
+
+<pre class="example">
+array([50.21, 55.5 , 74.13, ..., 59.34, 57.61, 49.84])
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #0084C8; font-weight: bold;">np_city</span> = np.column_stack((height, weight))
+np_city
+</code></pre>
+</div>
+
+<pre class="example">
+array([[ 1.67, 50.21],
+       [ 1.76, 55.5 ],
+       [ 1.78, 74.13],
+       ...,
+       [ 1.86, 59.34],
+       [ 1.79, 57.61],
+       [ 1.75, 49.84]])
+</pre>
+
+<p>
+*
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8141fb7" class="outline-2">
+<h2 id="org8141fb7">Intermediate Python</h2>
+<div class="outline-text-2" id="text-org8141fb7">
+</div>
+<div id="outline-container-org2f21882" class="outline-3">
+<h3 id="org2f21882">Data Visualization</h3>
+<div class="outline-text-3" id="text-org2f21882">
+</div>
+<div id="outline-container-orgb8cf6dd" class="outline-4">
+<h4 id="orgb8cf6dd">Matplotlib - line and scatter plot</h4>
+</div>
+</div>
+<div id="outline-container-org133c491" class="outline-3">
+<h3 id="org133c491">Dictionaries and Pandas</h3>
+<div class="outline-text-3" id="text-org133c491">
+</div>
+<div id="outline-container-org4a8671f" class="outline-4">
+<h4 id="org4a8671f">Dictionaries</h4>
+</div>
+<div id="outline-container-orgfb3056e" class="outline-4">
+<h4 id="orgfb3056e">Pandas</h4>
+<div class="outline-text-4" id="text-orgfb3056e">
+</div>
+<ul class="org-ul">
+<li><a id="org8f56cf1"></a>Dictionary to DataFrame<br /></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd2b4545" class="outline-2">
+<h2 id="orgd2b4545">Introduction to Statistics in Python</h2>
+<div class="outline-text-2" id="text-orgd2b4545">
+</div>
+<div id="outline-container-orge6ffa1e" class="outline-3">
+<h3 id="orge6ffa1e">Introduction Video</h3>
+<div class="outline-text-3" id="text-orge6ffa1e">
+</div>
+<div id="outline-container-org0e5cdf0" class="outline-4">
+<h4 id="org0e5cdf0">What is statistics?</h4>
+<div class="outline-text-4" id="text-org0e5cdf0">
+<ul class="org-ul">
+<li>The practice and study of collecting and analysing data.</li>
+<li>A summary statistics is a fact about or summary of some data.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2372d9c" class="outline-4">
+<h4 id="org2372d9c">What can statistics do?</h4>
+<div class="outline-text-4" id="text-org2372d9c">
+<ul class="org-ul">
+<li>How likely someone is to purchase a product? Are people more likely to purchase it if they can use a different payment system?</li>
+<li>How many occupant your hotel have? How can you optimise occupancy?</li>
+<li>How many sizes of jeans need to be manufactured so that they can fit 95% of the population? Should the same number of each size be produced?</li>
+<li>A/B tests: which add is more effective in getting people to purchase a product?</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org67beb91" class="outline-4">
+<h4 id="org67beb91">What statistics can&rsquo;t do?</h4>
+<div class="outline-text-4" id="text-org67beb91">
+<ul class="org-ul">
+<li>Why is Game of Thrones so</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfb2a43a" class="outline-4">
+<h4 id="orgfb2a43a">Types of statistics</h4>
+<div class="outline-text-4" id="text-orgfb2a43a">
+</div>
+<ul class="org-ul">
+<li><a id="orgd4ca222"></a>Descriptive Statistics<br />
+<div class="outline-text-5" id="text-orgd4ca222">
+<ul class="org-ul">
+<li>Describe and summarise</li>
+</ul>
+</div>
+</li>
+<li><a id="orgddff851"></a>Inferential Statistics<br />
+<div class="outline-text-5" id="text-orgddff851">
+<ul class="org-ul">
+<li>use sample data to make inferences about a larger population</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgd6ca929" class="outline-4">
+<h4 id="orgd6ca929">Two Types of Data</h4>
+<div class="outline-text-4" id="text-orgd6ca929">
+<ul class="org-ul">
+<li>Numeric (Quantitative)
+<ul class="org-ul">
+<li>Continuous data</li>
+<li>Discrete Data</li>
+</ul></li>
+<li>Categorical Data (Qualitative data)
+<ul class="org-ul">
+<li>Nominal</li>
+<li>Ordinal</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4879ab8" class="outline-4">
+<h4 id="org4879ab8">Why does data types matter?</h4>
+<div class="outline-text-4" id="text-org4879ab8">
+<ul class="org-ul">
+<li>Since data type dictate what kind of summary statistics and visualisation to use.
+<ul class="org-ul">
+<li></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org9b37102" class="outline-3">
+<h3 id="org9b37102">Measure of centre</h3>
+<div class="outline-text-3" id="text-org9b37102">
+</div>
+<div id="outline-container-orgd3e6e05" class="outline-4">
+<h4 id="orgd3e6e05">Histogram</h4>
+<div class="outline-text-4" id="text-orgd3e6e05">
+<ul class="org-ul">
+<li>data points into bins</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org52cffeb" class="outline-4">
+<h4 id="org52cffeb">Mean</h4>
+<div class="outline-text-4" id="text-org52cffeb">
+<ul class="org-ul">
+<li>add data divide by number of data points.</li>
+<li>use numpy mean function</li>
+<li></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6b05025" class="outline-4">
+<h4 id="org6b05025">Median</h4>
+<div class="outline-text-4" id="text-org6b05025">
+<ul class="org-ul">
+<li>Middle point after arranging it in order</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8ceaa1e" class="outline-4">
+<h4 id="org8ceaa1e">Mode</h4>
+<div class="outline-text-4" id="text-org8ceaa1e">
+<ul class="org-ul">
+<li>Most frequent data</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5df926d" class="outline-4">
+<h4 id="org5df926d">Which one to use?</h4>
+<div class="outline-text-4" id="text-org5df926d">
+<ul class="org-ul">
+<li>Mean is much more sensitive to extreme value.</li>
+<li>Mean is better for symetrical data</li>
+<li>Median is better for skew data.</li>
+<li>Mean is skewed in the direction of</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf9013c9" class="outline-3">
+<h3 id="orgf9013c9">Measure of centre - practice</h3>
+<div class="outline-text-3" id="text-orgf9013c9">
+</div>
+<div id="outline-container-org7bf6ae3" class="outline-4">
+<h4 id="org7bf6ae3">Food consumption in USA</h4>
+<div class="outline-text-4" id="text-org7bf6ae3">
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #204A87;"># </span><span style="color: #204A87;">Import numpy with alias np
+</span><span style="color: #A52A2A; font-weight: bold;">import</span> numpy <span style="color: #A52A2A; font-weight: bold;">as</span> np
+
+<span style="color: #204A87;"># </span><span style="color: #204A87;">Subset country for USA: usa_consumption
+</span><span style="color: #0084C8; font-weight: bold;">usa_consumption</span> = food_consumption[food_consumption[<span style="color: #4E9A06;">'country'</span>] == <span style="color: #4E9A06;">'USA'</span>]
+
+<span style="color: #204A87;"># </span><span style="color: #204A87;">Calculate mean consumption in USA
+</span><span style="color: #A020F0;">print</span>(np.mean(usa_consumption[<span style="color: #4E9A06;">'consumption'</span>]))
+
+<span style="color: #204A87;"># </span><span style="color: #204A87;">Calculate median consumption in USA
+</span><span style="color: #A020F0;">print</span>(np.median(usa_consumption[<span style="color: #4E9A06;">'consumption'</span>]))
+</code></pre>
+</div>
+
+<p>
+it.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Sarika Chaudhary</p>
+</div>
+</body>
+</html>
