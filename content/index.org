@@ -1,6 +1,6 @@
 #+TITLE: Learning in Progress
 #+AUTHOR: Sarika Chaudhary
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/style.css">
++HTML_HEAD: <link rel="stylesheet" type="text/css" href="/style.css">
 #+OPTIONS: toc:nil num:nil
 
 * Welcome
