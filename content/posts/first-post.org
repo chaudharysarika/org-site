@@ -1,0 +1,17 @@
+#+TITLE: My First Post
+#+AUTHOR: Your Name
+#+DATE: 2026-08-10
+#+OPTIONS: toc:nil num:nil
+
+* Introduction
+
+This is my first post written entirely in Org mode.
+
+* Why Org mode?
+
+Org mode makes it easy to write structured documents while
+keeping everything in plain text.
+
+#+begin_src python :results output
+print("Hello from Python!")
+#+end_scr

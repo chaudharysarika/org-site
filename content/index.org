@@ -1,0 +1,12 @@
+#+TITLE: My Org Website
+#+AUTHOR: Sarika Chaudhary
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/style.css">
+#+OPTIONS: toc:nil num:nil
+
+* Welcome
+
+This is my website built with Emacs Org mode.
+
+* Blog
+
+- [[file:posts/first-post.org][My first post]]
