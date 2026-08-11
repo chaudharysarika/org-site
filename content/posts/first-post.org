@@ -16,6 +16,16 @@ This is my first post written entirely in Org mode.
 Org mode makes it easy to write structured documents while
 keeping everything in plain text.
 
-#+begin_src python :results output
-print("Hello from Python!")
-#+end_scr
+#+begin_src python :exports both
+"Hello World!"
+#+end_src
+
+#+RESULTS:
+: Hello World!
+
+#+begin_src python :exports both :results output
+print("Hello World!")
+#+end_src
+
+#+RESULTS:
+: Hello World!
