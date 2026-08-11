@@ -1,4 +1,5 @@
 #+title: Introduction to Python
+#+AUTHOR: Sarika Chaudhary
 #+PROPERTY: header-args:python :session py-kernel :results value
 #+OPTIONS: num:nil
 #+OPTIONS: ^:nil
