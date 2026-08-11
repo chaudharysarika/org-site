@@ -221,10 +221,6 @@ blockquote {
    Mobile
    ========================= */
 
-/* =========================
-   Mobile
-   ========================= */
-
 @media (max-width: 700px) {
 
   body {
@@ -254,19 +250,17 @@ blockquote {
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Code results */
-  .results {
-    max-width: 100%;
+  /* Babel results / Org tables */
+  table {
+    display: block;
+    width: max-content;
+    min-width: 100%;
+    max-width: none;
+
     overflow-x: auto;
     overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-  }
 
-  .results pre {
-    max-width: none;
-    width: max-content;
-    white-space: pre;
-    overflow: visible;
+    -webkit-overflow-scrolling: touch;
   }
 
   h1 {
