@@ -127,7 +127,7 @@ pre {
   font-family: "SFMono-Regular", Consolas,
                "Liberation Mono", Menlo, monospace;
 
-  font-size: 0.85rem;
+  font-size: 1rem;
   line-height: 1.6;
 }
 
@@ -218,7 +218,7 @@ blockquote {
 
     pre {
     max-width: 100%;
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     }
 
     h1 {
