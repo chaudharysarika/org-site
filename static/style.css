@@ -104,21 +104,39 @@ li {
    ========================= */
 
 pre {
-    background: var(--code);
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    max-width: 100%;
-    box-sizing: border-box;
-    padding: 18px;
-    overflow-x: auto;
+  background: var(--code);
+  border: 1px solid var(--border);
+  border-radius: 7px;
 
-    font-family: "SFMono-Regular", Consolas,
-                 "Liberation Mono", Menlo, monospace;
+  padding: 18px;
+  margin: 1.5em 0;
 
-    font-size: 0.85rem;
-    line-height: 1.6;
+  max-width: 100%;
+  box-sizing: border-box;
 
-    white-space: pre;
+  /* Horizontal scrolling */
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  /* Keep code on one line */
+  white-space: pre;
+
+  /* Smooth scrolling on mobile */
+  -webkit-overflow-scrolling: touch;
+
+  font-family: "SFMono-Regular", Consolas,
+               "Liberation Mono", Menlo, monospace;
+
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.org-src-container {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  -webkit-overflow-scrolling: touch;
 }
 
 code {
@@ -200,7 +218,6 @@ blockquote {
 
     pre {
     max-width: 100%;
-    overflow-x: auto;
     font-size: 0.8rem;
     }
 
