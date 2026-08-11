@@ -139,6 +139,25 @@ pre {
   -webkit-overflow-scrolling: touch;
 }
 
+/* =========================
+   Code results
+   ========================= */
+
+.results {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.results pre {
+  max-width: none;
+  width: max-content;
+  min-width: 100%;
+  overflow: visible;
+  white-space: pre;
+}
+
 code {
     font-family: "SFMono-Regular", Consolas,
                  "Liberation Mono", Menlo, monospace;
@@ -213,7 +232,6 @@ blockquote {
     #content {
         padding: 30px 22px;
         max-width: 100%;
-        overflow-x: hidden;
     }
 
     pre {
