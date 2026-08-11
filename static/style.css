@@ -234,6 +234,12 @@ blockquote {
         max-width: 100%;
     }
 
+    .org-src-container {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    }
+
     pre {
     max-width: 100%;
     font-size: 0.95rem;
