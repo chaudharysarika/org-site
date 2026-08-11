@@ -1,6 +1,6 @@
 #+TITLE:  Learning in Progress
 #+AUTHOR: Sarika Chaudhary
-#+DATE: 2026-08-10
+#+DATE: 2026-08-11
 #+OPTIONS: toc:nil num:nil
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/org-site/style.css">
 
