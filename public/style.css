@@ -250,18 +250,26 @@ blockquote {
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Babel results / Org tables */
+ /* Org Babel result tables */
   table {
     display: block;
-    width: max-content;
-    min-width: 100%;
-    max-width: none;
-
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
-    overflow-y: hidden;
-
+    white-space: nowrap;
     -webkit-overflow-scrolling: touch;
   }
+
+  table tbody,
+  table tr {
+    width: max-content;
+  }
+
+  table td,
+  table th {
+    white-space: nowrap;
+  }
+
 
   h1 {
     font-size: 2rem;
