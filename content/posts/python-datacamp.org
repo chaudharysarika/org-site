@@ -5,6 +5,7 @@
 #+OPTIONS: num:nil
 #+OPTIONS: ^:nil
 #+STARTUP: inlineimages
+#+toc: headlines 2
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/org-site/style.css">
 
 * Introduction to Python
